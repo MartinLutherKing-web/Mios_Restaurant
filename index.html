@@ -2,6 +2,8 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mios · Our catch, your way · El Gouna</title>
+<meta name="theme-color" content="#0a2f3a">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Outfit:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap">
 <style>
 :root{--bg:#f5f9f9;--sea:#0a2f3a;--tq:#0e7c86;--tqs:#e3f0f1;--mut:#5f7b80;--ln:#d9e6e7;--white:#fff;
@@ -50,7 +52,7 @@ background:linear-gradient(180deg,#0a2f3a 0%,#0d4350 100%)}
 .lines svg:nth-child(2){animation-duration:55s;animation-direction:reverse}.lines svg:nth-child(3){animation-duration:70s}
 .lines path{fill:none;stroke:#bfe3e4;stroke-width:1;opacity:.28}
 @keyframes wave{to{transform:translateX(-50%)}}
-@media(max-width:700px){.hero{min-height:520px}}
+
 /* buttons */
 .btn{display:inline-block;background:var(--sea);color:#fff;border:1px solid var(--sea);padding:12px 28px;text-decoration:none;cursor:pointer;font:400 15px Outfit,sans-serif;border-radius:40px;margin:6px 8px 6px 0;transition:background .2s,color .2s,border-color .2s}
 [dir=rtl] .btn{margin:6px 0 6px 8px;font-family:Tajawal,sans-serif}
@@ -79,7 +81,7 @@ background:linear-gradient(180deg,#0a2f3a 0%,#0d4350 100%)}
 .pr{color:var(--tq);font-weight:400;white-space:nowrap;font-size:17px}
 .add{position:relative;width:38px;height:38px;border-radius:50%;border:1px solid var(--tq);background:none;color:var(--tq);cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s,transform .15s;overflow:hidden}
 .add svg{width:16px;height:16px}.add:hover{background:var(--tq);color:#fff}.add:active{transform:scale(.88)}
-.qty{font-size:13px;color:var(--mut);min-width:24px;text-align:center}
+.qty[hidden]{display:none}.qty{font-size:13px;color:var(--mut);min-width:24px;text-align:center}
 .fishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0 28px;margin-top:10px}
 .fishes div{padding:12px 0;border-bottom:1px solid var(--ln)}
 .note{color:var(--mut);font-size:13px;margin-top:26px}
@@ -121,6 +123,13 @@ background:linear-gradient(180deg,#0a2f3a 0%,#0d4350 100%)}
 .card5.feat p{font-size:clamp(18px,1.9vw,21px);color:#d6edee}.card5.feat p::first-letter{color:#8fd0d2}
 .card5 .by{font:400 14px/1.5 Outfit,sans-serif;letter-spacing:.01em}
 .card5 .by b{font:500 15px Outfit,sans-serif}
+/* perf + touch */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,a,.add{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+img{max-width:100%;height:auto}
+.card5,.it,.card{content-visibility:auto;contain-intrinsic-size:auto 180px}
+.hero .waves svg,.lines svg{will-change:transform}
+.hero{min-height:min(620px,82svh)}
 /* order + forms */
 .receipt{max-width:560px}
 .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--ln)}
@@ -137,6 +146,31 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--tq);outline-offset:
 footer{border-top:1px solid var(--ln);padding:30px 20px;text-align:center;color:var(--mut);font-size:13px}
 .fab{position:fixed;inset-inline-end:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;background:var(--sea);color:#fff;padding:12px 22px;border-radius:40px;text-decoration:none;font-size:15px;display:none;box-shadow:0 6px 24px #0a2f3a33}
 @media(max-width:760px){.bar{flex-wrap:wrap;gap:10px}nav{order:5;width:100%;overflow-x:auto;margin:0;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{white-space:nowrap}.logo{margin-inline-end:auto}}
+
+/* laptop / desktop */
+@media(min-width:1100px){.bar,main{max-width:1180px}.hero{min-height:min(660px,80svh)}
+ #menuList{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;max-width:none!important}}
+@media(min-width:900px){.homepop{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;max-width:none!important}}
+/* tablet */
+@media(max-width:1024px){main{padding:32px 24px 90px}.bar{padding:10px 24px}.grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}.score .big{font-size:80px}}
+@media(max-width:820px){nav a{padding:6px 10px;font-size:14px}.rvgrid{grid-template-columns:1fr 1fr}.card5.feat{grid-column:1/-1}}
+/* mobile */
+@media(max-width:640px){
+ body{font-size:15.5px}main{padding:22px 16px 110px}.bar{padding:8px 16px;gap:8px}
+ .logo{font-size:27px}.cartbtn{width:40px;height:40px}.lang{padding:6px 12px}
+ nav{margin-inline:-16px;padding:0 16px 4px;width:calc(100% + 32px)}nav a{padding:8px 12px}
+ header{backdrop-filter:none;-webkit-backdrop-filter:none;background:#f5f9f9}
+ .hero{border-radius:0;margin-inline:-16px;padding:48px 22px 100px;min-height:min(560px,78svh)}
+ .hero .cta .btn{display:block;text-align:center;margin:8px 0}.btn{padding:14px 26px}
+ .tabs{flex-wrap:nowrap;overflow-x:auto;gap:4px 20px;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs button{white-space:nowrap;padding:10px 2px}
+ .it{gap:12px;padding:16px 0}.it strong{font-size:17px}.add{width:44px;height:44px}.q button{width:36px;height:36px}
+ .promo{margin:34px 0;font-size:16px}.grid{gap:22px;margin:22px 0}
+ .rvgrid{grid-template-columns:1fr}.card5{padding:26px 20px 20px}.score{padding:22px 20px;gap:14px}.score .big{font-size:68px}.stars5 svg{width:22px;height:22px}
+ .receipt{max-width:none}.row{gap:8px}.fab{inset-inline:16px;text-align:center;padding:15px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+ input,textarea,select{font-size:16px}
+ .fishes{grid-template-columns:1fr 1fr;gap:0 16px}}
+@media(hover:none){.card5:hover{transform:none;box-shadow:none;border-color:var(--ln)}.btn:hover{background:inherit}}
+@media(max-width:380px){.logo{font-size:24px}.lang{font-size:13px}.fishes{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style></head><body>
 <header><div class="bar"><a class="logo" href="#home">mi<b>o</b>s</a><nav id="nav"></nav><button class="lang" id="lg"></button>
@@ -187,7 +221,9 @@ const t=k=>U[L][k],$=s=>document.querySelector(s),pages=["home","menu","about","
 const sum=()=>Object.values(cart).reduce((a,x)=>a+x.p*x.q,0),cnt=()=>Object.values(cart).reduce((a,x)=>a+x.q,0);
 const wa=txt=>"https://wa.me/"+WA+"?text="+encodeURIComponent(txt);
 const reduce=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
-function ch(k,d){const[ci,ii]=k.split("-"),it=M[ci][ii];cart[k]=cart[k]||{n:it.n,p:it.p,q:0};cart[k].q+=d;if(cart[k].q<=0)delete cart[k];render(d>0)}
+function ch(k,d){const[ci,ii]=k.split("-"),it=M[ci][ii];cart[k]=cart[k]||{n:it.n,p:it.p,q:0};cart[k].q+=d;if(cart[k].q<=0)delete cart[k];if(R()=="order")render(true);else patch()}
+function updCart(){const c=cnt(),b=$("#cc"),f=$("#fab");b.textContent=c;b.classList.toggle("on",c>0);f.textContent=`${t("order")} (${c}) · ${sum()-Math.round(sum()*.1)} EGP`;f.style.display=c&&R()!="order"?"block":"none"}
+function patch(){document.querySelectorAll(".it[data-k]").forEach(e=>{const q=(cart[e.dataset.k]||{}).q||0,c=e.querySelector(".qty");c.textContent="×"+q;c.hidden=!q});updCart()}
 function R(){const h=(location.hash||"#home").slice(1);return pages.includes(h)?h:"home"}
 function ripple(btn,ev){const r=btn.getBoundingClientRect(),s=document.createElement("span"),z=r.width/4;s.className="ripple";s.style.cssText=`width:${z}px;height:${z}px;left:${r.width/2-z/2}px;top:${r.height/2-z/2}px`;btn.appendChild(s);setTimeout(()=>s.remove(),650)}
 function landed(){const c=$("#cartbtn"),b=$("#cc");c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump");b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop");
@@ -204,12 +240,12 @@ function fly(btn,ev){
  ox.animate([{transform:"translateX(0)"},{transform:`translateX(${dx}px)`}],{...o,easing:"cubic-bezier(.4,.1,.7,.6)"});
  oy.animate([{transform:"translateY(0)"},{transform:`translateY(${dy}px)`}],{...o,easing:"cubic-bezier(.3,-.5,.6,1)"});
  el.animate([{transform:"scale(1)"},{transform:"scale(1.2)",offset:.2},{transform:"scale(.35)"}],{...o,easing:"ease-in-out"});
- const iv=setInterval(()=>{const r=el.getBoundingClientRect(),d=document.createElement("i"),z=5+Math.random()*6;d.className="trail";d.style.cssText=`width:${z}px;height:${z}px;left:${r.left+r.width/2-z/2}px;top:${r.top+r.height/2-z/2}px`;document.body.appendChild(d);setTimeout(()=>d.remove(),600)},45);
+ const iv=setInterval(()=>{const r=el.getBoundingClientRect(),d=document.createElement("i"),z=5+Math.random()*6;d.className="trail";d.style.cssText=`width:${z}px;height:${z}px;left:${r.left+r.width/2-z/2}px;top:${r.top+r.height/2-z/2}px`;document.body.appendChild(d);setTimeout(()=>d.remove(),600)},70);
  setTimeout(()=>{clearInterval(iv);ox.remove();landed()},D);
 }
 function add(k,btn,ev){fly(btn,ev);ch(k,1)}
 const plus=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`;
-const dish=(x,k)=>{const q=cart[k]?cart[k].q:0;return`<div class="it"><div class="n"><strong>${x.n}</strong>${x.d?`<small>${x.d}</small>`:""}</div>${q?`<span class="qty">×${q}</span>`:""}<span class="pr">${x.p}</span><button class="add" aria-label="add ${x.n}" onclick="add('${k}',this,event)">${plus}</button></div>`};
+const dish=(x,k)=>{const q=cart[k]?cart[k].q:0;return`<div class="it" data-k="${k}"><div class="n"><strong>${x.n}</strong>${x.d?`<small>${x.d}</small>`:""}</div><span class="qty"${q?"":" hidden"}>×${q}</span><span class="pr">${x.p}</span><button class="add" aria-label="add ${x.n}" onclick="add('${k}',this,event)">${plus}</button></div>`};
 const POP=["6-0","5-0","3-2","1-1"];
 const RV=[
 {n:"Pferd2021",c:"",d:"February 15, 2026",tp:["Couple","زوجان"],h:"Great selection of excellent fresh fish",x:"A very nice place right on the water with an excellent choice of fresh fish. The starter and the fish were outstanding. The staff were extremely friendly, and the prices are absolutely fair.",u:"https://www.tripadvisor.de/ShowUserReviews-g297548-d25417234-r1049823456-Mios-El_Gouna_Hurghada_Red_Sea_and_Sinai.html"},
@@ -226,9 +262,9 @@ home:()=>`<div class="hero"><p class="sub">${t("sub")}</p><h1 class="mega">mios<
 <div class="promo">${t("promo")}</div>
 <div class="grid"><div class="card"><h3>${t("c1")}</h3><p>${t("c1t")}</p></div><div class="card"><h3>${t("c2")}</h3><p>${t("c2t")}</p></div><div class="card"><h3>${t("c3")}</h3><p>${t("c3t")}</p></div></div>
 <h2 style="margin-top:70px">${t("h1")}</h2><p class="lead">${t("h1t")}</p><p class="stars">★ ${t("rate")} · <a href="#reviews">${t("reviews")}</a></p>
-<div style="margin-top:20px;max-width:640px">${POP.map(k=>{const[c,i]=k.split("-");return dish(M[c][i],k)}).join("")}</div>`,
+<div class="homepop" style="margin-top:20px;max-width:640px">${POP.map(k=>{const[c,i]=k.split("-");return dish(M[c][i],k)}).join("")}</div>`,
 menu:()=>{const cs=U[L].cats;let b=`<h1>${t("menu")}</h1><div class="tabs">${cs.map((c,i)=>`<button class="${i==cat?"on":""}" onclick="cat=${i};render()">${c}</button>`).join("")}</div>`;
-if(cat<9)b+=`<div style="max-width:720px">`+M[cat].map((x,i)=>dish(x,cat+"-"+i)).join("")+`</div>`;
+if(cat<9)b+=`<div id="menuList" style="max-width:720px">`+M[cat].map((x,i)=>dish(x,cat+"-"+i)).join("")+`</div>`;
 else b+=`<h3>${t("catch")}</h3><p class="lead">${t("day")}</p><div class="fishes">`+FISH.map(f=>`<div>${f}</div>`).join("")+`</div>`;
 return b+`<p class="note">${t("vat")}</p>`},
 reviews:()=>`<h1>${t("rv")}</h1><div class="score"><span class="big">4.7</span><div>${stars5(4.7)}<div class="sm">${t("rvs")}</div></div></div><div class="rvgrid">${RV.map(rvCard).join("")}</div><p class="note">Reviews from Tripadvisor, shown in English. Originals are on Tripadvisor.</p><p style="margin-top:20px"><a class="btn ol" href="${TA}" target="_blank" rel="noopener">${t("rvm")}</a></p>`,
@@ -245,8 +281,7 @@ function ord(){const e=Object.values(cart),s=sum(),d=Math.round(s*.1);location.h
 function render(keep){const p=R(),sy=scrollY;document.documentElement.lang=L;document.documentElement.dir=L=="ar"?"rtl":"ltr";
 $("#nav").innerHTML=pages.map(x=>`<a href="#${x}" class="${x==p?"on":""}">${t(x)}</a>`).join("");$("#lg").textContent=L=="en"?"العربية":"English";
 $("#app").innerHTML=V[p]();$("#ft").innerHTML=`© Mios El Gouna · ${t("proto")}`;
-const c=cnt(),b=$("#cc");b.textContent=c;b.classList.toggle("on",c>0);
-const f=$("#fab");f.textContent=`${t("order")} (${c}) · ${sum()-Math.round(sum()*.1)} EGP`;f.style.display=c&&p!="order"?"block":"none";
+updCart();
 if(keep)scrollTo(0,sy)}
 $("#lg").onclick=()=>{L=L=="en"?"ar":"en";render()};addEventListener("hashchange",()=>{render();scrollTo(0,0)});render();
 </script></body></html>
