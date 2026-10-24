@@ -92,6 +92,26 @@ background:linear-gradient(180deg,#0a2f3a 0%,#0d4350 100%)}
 .ring{position:fixed;z-index:101;pointer-events:none;border:1px solid var(--tq);border-radius:50%}
 .ripple{position:absolute;border-radius:50%;background:#0e7c8633;transform:scale(0);animation:rp .6s ease-out forwards;pointer-events:none}
 @keyframes rp{to{transform:scale(4);opacity:0}}
+/* reviews */
+.score{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin:26px 0 40px;padding:28px 32px;border-radius:8px;background:linear-gradient(180deg,#0a2f3a,#0d4350);color:#fff;animation:fade .9s ease-out both}
+.score .big{font:300 92px/1 Fraunces,serif;letter-spacing:-.04em}
+.score .sm{color:#8fd0d2;font-size:15px}
+.stars5{display:inline-flex;gap:4px}
+.stars5 svg{width:26px;height:26px;fill:#f6b93b;filter:drop-shadow(0 2px 6px #f6b93b55);transform-origin:center;animation:starpop .6s cubic-bezier(.3,1.7,.5,1) both;animation-delay:calc(var(--i)*.1s + .25s)}
+.card5 .stars5 svg{width:20px;height:20px;animation-delay:calc(var(--i)*.08s + var(--d,0s) + .5s)}
+@keyframes starpop{0%{transform:scale(0) rotate(-90deg);opacity:0}70%{transform:scale(1.3) rotate(10deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+.rvgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.card5{position:relative;display:flex;flex-direction:column;gap:12px;padding:30px 28px 24px;background:#fff;border:1px solid var(--ln);border-radius:8px;overflow:hidden;animation:fade .8s ease-out both;animation-delay:calc(var(--d,0s) + .15s);transition:transform .3s,box-shadow .3s,border-color .3s}
+.card5:hover{transform:translateY(-6px);border-color:var(--tq);box-shadow:0 20px 44px #0a2f3a1f}
+.card5::before{content:'\201C';position:absolute;top:-6px;inset-inline-end:18px;font:400 130px/1 Fraunces,serif;color:var(--tqs);pointer-events:none}
+.card5.feat{grid-column:1/-1;background:var(--sea);color:#fff;border-color:var(--sea)}
+.card5.feat::before{color:#ffffff14}.card5.feat h3{font-size:clamp(26px,3.4vw,36px);max-width:720px}.card5.feat .by,.card5.feat .meta{color:#8fd0d2}
+.card5 h3{font-size:21px;margin:0;position:relative}
+.card5 p{margin:0;color:inherit;opacity:.85;position:relative}
+.card5 .by{margin-top:auto;padding-top:14px;border-top:1px solid var(--ln);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--mut)}
+.card5.feat .by{border-color:#ffffff22}
+.card5 .by b{font-weight:500;color:inherit}.card5:not(.feat) .by b{color:var(--sea)}
+.card5 a.src{color:inherit;opacity:.7;font-size:13px}
 /* order + forms */
 .receipt{max-width:560px}
 .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--ln)}
@@ -118,7 +138,7 @@ footer{border-top:1px solid var(--ln);padding:30px 20px;text-align:center;color:
 <script>
 const WA="201069032320",MAP="https://www.google.com/maps/search/?api=1&query=27.393467,33.676884",TA="https://www.tripadvisor.de/Restaurant_Review-g297548-d25417234-Reviews-Mios-El_Gouna_Hurghada_Red_Sea_and_Sinai.html";
 let L="en",cart={},cat=0;
-const U={en:{home:"Home",menu:"Menu",about:"About",events:"Events",order:"Order",contact:"Contact",tag:"Our catch · Your way",sub:"Seafood restaurant · El Gouna",cta1:"View the menu",cta2:"Order now",
+const U={en:{home:"Home",menu:"Menu",about:"About",events:"Events",reviews:"Reviews",rv:"What our guests say",rvs:"5 stars from every guest review shown here",rvm:"Read all reviews on Tripadvisor",order:"Order",contact:"Contact",tag:"Our catch · Your way",sub:"Seafood restaurant · El Gouna",cta1:"View the menu",cta2:"Order now",
 h1:"Fresh from the Red Sea",h1t:"Fish, shrimp, calamari and clams, grilled, fried or baked your way, plus handmade pasta and Mediterranean dips.",
 c1:"Choose your catch",c1t:"Pick the fish of the day and select how you want it cooked.",c2:"Live music & events",c2t:"Guitar evenings, birthdays and private celebrations by the water.",c3:"Order online",c3t:"Build your order here and confirm it on WhatsApp.",
 promo:"<b>10% off</b> when you order food through this website",rate:"Rated 4.7 / 5 on Tripadvisor",
@@ -130,7 +150,7 @@ evf:"Ask about an event",date:"Date",guests:"Guests",kind:"Event type",nm:"Your 
 cart:"Your order",empty:"Nothing yet. Add dishes from the menu.",sub2:"Subtotal",disc:"Website discount (10%)",tot:"Total before VAT and service",how:"How would you like it?",d1:"Dine-in",d2:"Pickup",d3:"Delivery",addr:"Delivery address or table time",confirm:"Confirm on WhatsApp",
 ct:"Visit us",ad:"Address",ph:"Phone",hr:"Opening hours",hrt:"Every day, 13:00 to 23:00",dir:"Open in Google Maps",ta:"Read reviews on Tripadvisor",pay:"Cards accepted: Visa, Mastercard",
 cats:["Salads","Appetizers & Dips","Soups","Starters","Sides","Pastas","Platters","Sandwiches","Drinks","Seafood"],proto:"Prototype · content and prices from the printed menu"},
-ar:{home:"الرئيسية",menu:"القائمة",about:"من نحن",events:"المناسبات",order:"اطلب",contact:"تواصل معنا",tag:"صيدنا · بطريقتك",sub:"مطعم مأكولات بحرية · الجونة",cta1:"شاهد القائمة",cta2:"اطلب الآن",
+ar:{home:"الرئيسية",menu:"القائمة",about:"من نحن",events:"المناسبات",reviews:"التقييمات",rv:"ماذا يقول ضيوفنا",rvs:"5 نجوم من كل تقييم معروض هنا",rvm:"اقرأ كل التقييمات على تريب أدفايزر",order:"اطلب",contact:"تواصل معنا",tag:"صيدنا · بطريقتك",sub:"مطعم مأكولات بحرية · الجونة",cta1:"شاهد القائمة",cta2:"اطلب الآن",
 h1:"طازج من البحر الأحمر",h1t:"سمك وجمبري وكاليماري وبطلينوس، مشوي أو مقلي أو مخبوز بطريقتك، مع مكرونة مصنوعة يدويا ومقبلات متوسطية.",
 c1:"اختر صيدك",c1t:"اختر سمك اليوم وحدد طريقة الطهي.",c2:"موسيقى ومناسبات",c2t:"أمسيات جيتار وأعياد ميلاد واحتفالات خاصة على الماء.",c3:"اطلب أونلاين",c3t:"جهّز طلبك هنا وأكده عبر واتساب.",
 promo:"<b>خصم 10%</b> عند طلب الطعام من خلال هذا الموقع",rate:"تقييم 4.7 / 5 على تريب أدفايزر",
@@ -154,7 +174,7 @@ const M=[
 "Water|60|;Coffee|100|;Fresh Juices|100|Orange, mango or lemon;Moussy|120|;Soft Drinks|80|Pepsi, Seven Up, Mirinda;Sparkling Water|100|;Tea / Anise|50|"
 ].map(s=>s.split(";").map(r=>{const[a,b,c]=r.split("|");return{n:a,p:+b,d:c}}));
 const FISH="Swordfish fillet,Dorade,Clams,Coral trout (Nagel),Crab,Red mullet (Barbouni),Shrimp (S / M / L),Sole (Mosa),Seabass,Shalal tilapia,Fish fillet (Nagel)".split(",");
-const t=k=>U[L][k],$=s=>document.querySelector(s),pages=["home","menu","about","events","order","contact"];
+const t=k=>U[L][k],$=s=>document.querySelector(s),pages=["home","menu","about","events","reviews","order","contact"];
 const sum=()=>Object.values(cart).reduce((a,x)=>a+x.p*x.q,0),cnt=()=>Object.values(cart).reduce((a,x)=>a+x.q,0);
 const wa=txt=>"https://wa.me/"+WA+"?text="+encodeURIComponent(txt);
 const reduce=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -182,17 +202,27 @@ function add(k,btn,ev){fly(btn,ev);ch(k,1)}
 const plus=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`;
 const dish=(x,k)=>{const q=cart[k]?cart[k].q:0;return`<div class="it"><div class="n"><strong>${x.n}</strong>${x.d?`<small>${x.d}</small>`:""}</div>${q?`<span class="qty">×${q}</span>`:""}<span class="pr">${x.p}</span><button class="add" aria-label="add ${x.n}" onclick="add('${k}',this,event)">${plus}</button></div>`};
 const POP=["6-0","5-0","3-2","1-1"];
+const RV=[
+{n:"Pferd2021",c:"",d:"15. Februar 2026",tp:["Couple","زوجان"],h:"große auswahl an hervorragendem frischen fisch",x:"sehr nettes lokal direkt am wasser, ausgezeichnetes angebot an frischem fisch. vorspeise und fische waren hervorragend. personal war extrem freundlich. preislich absolut fair",u:"https://www.tripadvisor.de/ShowUserReviews-g297548-d25417234-r1049823456-Mios-El_Gouna_Hurghada_Red_Sea_and_Sinai.html"},
+{n:"Stephen M",c:"Dolgellau, Vereinigtes Königreich",d:"17. Oktober 2025",tp:["Couple","زوجان"],h:"Wunderbarer Service, schöne Lage, fabelhaftes Essen",x:"Ein schönes Erlebnis in diesem ruhigen und wunderschön gelegenen Restaurant. Das Personal war aufmerksam und Gastfreundlichkeit. Das Essen war ausgezeichnet. Zu der Zeit, als sie noch keine Alkohollizenz hatten, kein Problem, wir bekommen Sie geliefert! Wunderbare Mahlzeit, schöne Zeit und wir werden uns freuen, wieder zu kommen!",u:"https://www.tripadvisor.de/ShowUserReviews-g297548-d25417234-r1035270245-Mios-El_Gouna_Hurghada_Red_Sea_and_Sinai.html"},
+{n:"Ianna I",c:"",d:"18. April 2025",tp:["Family","عائلة"],h:"Frische, schmackhafte, fachmännisch gegrillte Meeresfrüchte – ein wahrer Geschmack des Meeres.",x:"Frische Meeresfrüchte bis zur Perfektion gekocht! Die gegrillten Fische, Muscheln, Garnelen und Calamari strotzen vor Geschmack – einfach gewürzt, um die Frische strahlen zu lassen. Alles war zart, saftig und fachmännisch zubereitet. Ein wahres verstecktes Juwel für Meeresfrüchteliebhaber.",u:"https://www.tripadvisor.de/ShowUserReviews-g297548-d25417234-r1003153618-Mios-El_Gouna_Hurghada_Red_Sea_and_Sinai.html"},
+{n:"Lucia F",c:"Marktheidenfeld, Deutschland",d:"27. November 2024",tp:["Couple","زوجان"],h:"Wunderbar!",x:"Ein liebenswürdiger Empfang in einem schönen Restaurant am Downtown- Eingang und direkt auf dem Wasser. Von der ausgezeichneten Speisekarte mit Fisch- und Meeresfrüchte-Gerichten haben wir inzwischen schon einige mit großem Genuss verzehrt! Dazu gute Gespräche und ein hervorragender Service- danke, kommen sehr gern wieder!",u:"https://www.tripadvisor.de/ShowUserReviews-g297548-d25417234-r982395904-Mios-El_Gouna_Hurghada_Red_Sea_and_Sinai.html"},
+{n:"Mobile53042050662",c:"",d:"23. November 2024",tp:["Couple","زوجان"],h:"Immer wieder sehr gern!",x:"Ausgezeichnete Speisen, sehr freundliche Beratung (auch in Deutsch), schönes und sehr sauberes Ambiente und gute Gespräche. Wir kommen gern wieder und geben allerbeste Empfehlung! Insidertipp: Unbedingt besuchen und genießen!",u:"https://www.tripadvisor.de/ShowUserReviews-g297548-d25417234-r981564639-Mios-El_Gouna_Hurghada_Red_Sea_and_Sinai.html"}];
+const star=`<svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21.1 7 14.2 2 9.3l6.9-1z"/></svg>`;
+const stars5=()=>`<span class="stars5" role="img" aria-label="5 / 5">${[0,1,2,3,4].map(i=>`<span style="--i:${i}">${star}</span>`).join("")}</span>`.replace(/<span style="--i:(\d)">/g,'<span style="--i:$1;display:inline-flex">');
+const rvCard=(r,i)=>`<article class="card5${i==0?" feat":""}" style="--d:${i*.12}s">${stars5()}<h3 lang="de">${r.h}</h3><p lang="de">${r.x}</p><div class="by"><span><b>${r.n}</b>${r.c?" · "+r.c:""}</span><span>${r.tp[L=="en"?0:1]} · ${r.d}</span><a class="src" href="${r.u}" target="_blank" rel="noopener">Tripadvisor</a></div></article>`;
 const wave=`<div class="lines">${[18,34,50].map(p=>`<svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="top:${p}%"><path d="M0 30 Q90 10 180 30 T360 30 T540 30 T720 30 T900 30 T1080 30 T1260 30 T1440 30"/></svg>`).join("")}</div><div class="waves"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path fill="#f5f9f9" d="M0 40 Q180 10 360 40 T720 40 T1080 40 T1440 40 V70 H0Z"/></svg></div>`;
 const V={
 home:()=>`<div class="hero"><p class="sub">${t("sub")}</p><h1 class="mega">mios</h1><p class="tag">${t("tag")}</p><div class="cta"><a class="btn tq" href="#menu">${t("cta1")}</a><a class="btn ol" href="#order">${t("cta2")}</a></div>${wave}</div>
 <div class="promo">${t("promo")}</div>
 <div class="grid"><div class="card"><h3>${t("c1")}</h3><p>${t("c1t")}</p></div><div class="card"><h3>${t("c2")}</h3><p>${t("c2t")}</p></div><div class="card"><h3>${t("c3")}</h3><p>${t("c3t")}</p></div></div>
-<h2 style="margin-top:70px">${t("h1")}</h2><p class="lead">${t("h1t")}</p><p class="stars">★ ${t("rate")}</p>
+<h2 style="margin-top:70px">${t("h1")}</h2><p class="lead">${t("h1t")}</p><p class="stars">★ ${t("rate")} · <a href="#reviews">${t("reviews")}</a></p>
 <div style="margin-top:20px;max-width:640px">${POP.map(k=>{const[c,i]=k.split("-");return dish(M[c][i],k)}).join("")}</div>`,
 menu:()=>{const cs=U[L].cats;let b=`<h1>${t("menu")}</h1><div class="tabs">${cs.map((c,i)=>`<button class="${i==cat?"on":""}" onclick="cat=${i};render()">${c}</button>`).join("")}</div>`;
 if(cat<9)b+=`<div style="max-width:720px">`+M[cat].map((x,i)=>dish(x,cat+"-"+i)).join("")+`</div>`;
 else b+=`<h3>${t("catch")}</h3><p class="lead">${t("day")}</p><div class="fishes">`+FISH.map(f=>`<div>${f}</div>`).join("")+`</div>`;
 return b+`<p class="note">${t("vat")}</p>`},
+reviews:()=>`<h1>${t("rv")}</h1><div class="score"><span class="big">5.0</span><div>${stars5()}<div class="sm">${t("rvs")}</div></div></div><div class="rvgrid">${RV.map(rvCard).join("")}</div><p style="margin-top:34px"><a class="btn ol" href="${TA}" target="_blank" rel="noopener">${t("rvm")}</a></p>`,
 about:()=>`<h1>${t("ab")}</h1><div class="grid"><div class="lead">${t("abt").map(p=>`<p>${p}</p>`).join("")}</div></div><div class="grid">${t("facts").map(f=>`<div class="card box">${f}</div>`).join("")}</div><p class="stars">★ ${t("rate")}</p>`,
 events:()=>`<h1>${t("ev")}</h1><p class="lead">${t("evt")}</p><div class="grid">${[1,2,3].map(i=>`<div class="card"><h3>${t("ev"+i)}</h3><p>${t("ev"+i+"t")}</p></div>`).join("")}</div>
 <div class="receipt"><h3>${t("evf")}</h3><label>${t("nm")}<input id="en"></label><label>${t("kind")}<select id="ek"><option>${t("ev1")}</option><option>${t("ev2")}</option><option>${t("ev3")}</option></select></label><label>${t("date")}<input id="ed" type="date"></label><label>${t("guests")}<input id="eg" type="number" min="1"></label><label>${t("msg")}<textarea id="em" rows="3"></textarea></label><button class="btn tq" onclick="evs()">${t("send")}</button></div>`,
